@@ -626,7 +626,7 @@ void join_namespaces(char *nslist)
 
 		write_log(DEBUG, "setns(%#x) into %s namespace (with path %s)", flag, ns->type, ns->path);
 		if (setns(ns->fd, flag) < 0)
-			bail("failed to setns into %s namespace", ns->type);
+			bail("failed to setns into %s namespace %d", ns->type, errno);
 
 		close(ns->fd);
 	}

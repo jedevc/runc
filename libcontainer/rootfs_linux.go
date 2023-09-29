@@ -1141,7 +1141,7 @@ func mountPropagate(m *configs.Mount, rootfs string, mountLabel string, mountFd 
 	// target needs to be re-opened.
 	if err := utils.WithProcfd(rootfs, m.Destination, func(procfd string) error {
 		for _, pflag := range m.PropagationFlags {
-			if err := mount("", m.Destination, procfd, "", uintptr(pflag), ""); err != nil {
+			if err := mount("", m.Destination, "", "", uintptr(pflag), ""); err != nil {
 				return err
 			}
 		}
